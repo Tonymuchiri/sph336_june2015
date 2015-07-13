@@ -8,9 +8,6 @@
 #include "main.h"
 
 int main(void){	
-	//whether to blink LED2
-	//uint8_t blink=1;
-	
 
 	//initialize system
 	SystemInit();
@@ -29,23 +26,34 @@ int main(void){
 	while(1)
 	{
 		//use polling method to echo back data when available
-		if(data_available()){ 
+		if(data_available())
+		  { 
 			byte = uart_read();
-			if(byte==0xD){ 
+			if(byte==0xD)
+                            { 
 				puts((uint8_t *)"\r\n"); //send new line character
 			//0 to 9 ascii code in hexadecimal 
-			}else if ((byte >= 0x30) && (byte <= 0x39)) 
-			{byte = byte - 0x30; display(byte);
+			
+                             }
+                        else if ((byte >= 0x30) && (byte <= 0x39)) 
+			     {
+                                byte = byte - 0x30; display(byte);
 			
 			//small case letters a to f ascii code in hexadecimal
-			}else if ((byte >= 0x61) && (byte <= 0x66)){
+			     }
+                        else if ((byte >= 0x61) && (byte <= 0x66))
+                             {
 				byte = byte - 0x57; display(byte);
-				}else if((byte >= 0x41) && (byte <= 0x46)){
-					byte = byte - 0x37; display(byte);
-				}else{
+			     }
+                        else if((byte >= 0x41) && (byte <= 0x46))
+                             {
+		       		byte = byte - 0x37; display(byte);
+			     }
+                        else{
 				
-				}
-		}
+			    }
+		  }
+		else uartsend((uint8_t *)byte);
 	}
 }
 

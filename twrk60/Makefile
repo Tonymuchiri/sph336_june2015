@@ -6,9 +6,9 @@
 #
 
 # toolchain specific
-TOOLCHAIN = arm-none-eabi-
+TOOLCHAIN = /home/tony/sph336_june2015/twrk60/gcc-arm-none-eabi-4_9-2015q2/bin/arm-none-eabi-
 CC = $(TOOLCHAIN)gcc
-CXX = $(TOOLCHAIN)g++
+CXX = $(TOOLCHAIN)g++ 
 AS = $(TOOLCHAIN)gcc -x assembler-with-cpp
 LD = $(TOOLCHAIN)gcc
 OBJCP = $(TOOLCHAIN)objcopy
