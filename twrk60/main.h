@@ -8,10 +8,9 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#include"gpio.h"
 #include"uart.h"
 
-uint8_t byte=0x0;
+//uint8_t byte=0x0;
 void delay(void);
 
 

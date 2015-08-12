@@ -8,21 +8,36 @@
 #include "main.h"
 
 int main(void){	
+	//whether to blink LED2
+      // uint8_t blink=1;
+	
 
 	//initialize system
 	SystemInit();
-
-	//initialize UART5 with 8-N-1 settings, 57600 baudrate
-	init_uart(UART5_BASE_PTR,periph_clk_khz,57600);
+        infra_init();
+        uart0_init(UART0_BASE_PTR,periph_clk_khz,115200);
+       // gpio_init();
+        infra_transmit(0xff);
+       while(1)
+         { 
+             if(data_present())
+                {  
+          display(0xff);
+                 }
+         }
+	//with 8-N-1 settings, 57600 baudrate
+       //	init_uart(UART5_BASE_PTR,periph_clk_khz,57600);
+        //
 
 	//clear all interrupts and enable interrupts
-	nvic->ICPR[2] |= 1 << (87 & 0x1F); //Clear Pending Interrupts
-	nvic->ISER[2] |= 1 << (87 & 0x1F); //Enable Interrupts
+       	//nvic->ICPR[2] |= 1 << (87 & 0x1F); //Clear Pending Interrupts
+	//nvic->ISER[2] |= 1 << (87 & 0x1F); //Enable Interrupts
 	
 	//initialize GPIO ports
-	gpio_init();
+	//gpio_init();
 
 	//Loop forever
+        /*
 	while(1)
 	{
 		//use polling method to echo back data when available
@@ -54,7 +69,7 @@ int main(void){
 			    }
 		  }
 		else uartsend((uint8_t *)byte);
-	}
+	}*/
 }
 
 /*
@@ -70,4 +85,3 @@ void delay(void)
       __asm__("nop");
   }
 }
-

@@ -168,15 +168,15 @@ typedef struct{
 //instances of ports
 PORT PA = (PORT)pta;
 //PORT portB = (PORT)ptb;
-//PORT portC = (PORT)ptc;
-//PORT portD = (PORT)ptd;
+PORT portC = (PORT)ptc;
+PORT portD = (PORT)ptd;
 PORT PE = (PORT)pte;
 
 //instances of GPIO for ports
 GPIO GPIOA = (GPIO)porta;
 //GPIO PTB = (GPIO)portb;
-//GPIO PTC = (GPIO)portc;
-//GPIO PTD = (GPIO)portd;
+GPIO PTC = (GPIO)portc;
+GPIO PTD = (GPIO)portd;
 GPIO GPIOE = (GPIO)porte;
 
 //nivc instance

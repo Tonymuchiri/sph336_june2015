@@ -14,6 +14,7 @@ LD = $(TOOLCHAIN)gcc
 OBJCP = $(TOOLCHAIN)objcopy
 AR = $(TOOLCHAIN)ar
 GDB = $(TOOLCHAIN)gdb
+SIZE =$(TOOLCHAIN)size
 GDBSERVER = openocd -c "interface osbdm" -f /opt/openocd/share/openocd/scripts/board/twr-k60n512.cfg
 OPENOCDPID = $(shell pgrep openocd)
 
@@ -117,7 +118,7 @@ clean:
 print_size:
 	@echo 'Printing size'
 	@echo '-------------'
-	arm-none-eabi-size --totals $(OBJ_FOLDER)$(TARGET).$(TARGET_EXT); arm-none-eabi-objcopy -O binary $(OBJ_FOLDER)$(TARGET).$(TARGET_EXT) $(OBJ_FOLDER)$(TARGET).bin ;
+	$(SIZE) --totals $(OBJ_FOLDER)$(TARGET).$(TARGET_EXT); $(OBJCP) -O binary $(OBJ_FOLDER)$(TARGET).$(TARGET_EXT) $(OBJ_FOLDER)$(TARGET).bin ;
 	@echo ' '
 
 .PHONY: all clean dependents print_size
